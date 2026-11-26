@@ -1,7 +1,7 @@
 const allowedOrigins = new Set([
   "https://misszero.xyz",
   "https://www.misszero.xyz",
-  "https://makssay.github.io",
+  "https://miss-zero7.github.io",
 ]);
 
 Deno.serve(async (request) => {
