@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101010">
+  <meta name="wallet-api" content="">
+  <title>MISS ZERO GIVEAWAY</title>
+  <link rel="icon" href="../assets/favicon.png">
+  <link rel="stylesheet" href="style.css?v=6">
+  <script src="app.js?v=11" defer></script>
+</head>
+<body>
+  <main class="layout" id="giveaway">
+    <section class="identity" aria-labelledby="title">
+      <h1 id="title"><img src="../assets/giveaway-wordmark.webp" width="645" height="390" alt="MISS ZERO GIVEAWAY"></h1>
+      <div class="details">
+        <p class="intro">One giveaway. Two ways to get on the list.</p>
+        <dl class="passes">
+          <div><dt>GTD WL</dt><dd>Guaranteed mint spot</dd></div>
+          <div><dt>FCFS WL</dt><dd>First come, first served</dd></div>
+        </dl>
+        <a class="messages-link" href="#messages">Go to messages <span aria-hidden="true">↓</span></a>
+      </div>
+    </section>
+
+    <section class="phone" id="messages" aria-label="MISS ZERO text messages" tabindex="-1">
+      <div class="handset" aria-hidden="true"></div>
+      <div class="screen">
+        <div class="unread" id="unread">
+          <img class="envelope" src="../assets/giveaway-envelope.webp" width="52" height="42" alt="">
+          <p>1 NEW MESSAGE</p>
+          <button class="action primary" id="read" type="button">Read message</button>
+          <noscript><p>Enable JavaScript to read the message.</p></noscript>
+        </div>
+
+        <div class="conversation" id="conversation" hidden>
+          <header class="sender">
+            <img src="../assets/giveaway-sender.webp" width="109" height="109" alt="">
+            <h2>MISS ZERO</h2>
+            <p id="progress" role="status" aria-label="0 of 6 tasks marked">0/6</p>
+          </header>
+          <div class="thread" id="thread" role="log" aria-label="Conversation history" tabindex="0"></div>
+          <div class="controls">
+            <button class="action primary" id="join" type="button">I’m in.</button>
+            <form class="reply-form" id="reply-form" novalidate hidden>
+              <label class="sr-only" for="reply" id="reply-label">X username</label>
+              <div class="sms-input">
+                <span id="reply-prefix" aria-hidden="true">@</span>
+                <input id="reply" required type="text" autocomplete="off" autocapitalize="none" spellcheck="false" maxlength="42" aria-describedby="reply-error">
+              </div>
+              <button class="action primary" type="submit">Send</button>
+              <p class="input-error" id="reply-error" role="alert"></p>
+            </form>
+            <form class="task-controls" id="task-controls" novalidate hidden>
+              <div class="task-proof" id="task-proof" hidden>
+                <label class="sr-only" for="proof" id="proof-label">Post link</label>
+                <div class="sms-input">
+                  <input id="proof" type="text" inputmode="url" autocomplete="off" autocapitalize="none" spellcheck="false" maxlength="512" aria-describedby="proof-error">
+                </div>
+                <p class="input-error" id="proof-error" role="alert"></p>
+              </div>
+              <a class="action primary" id="open-task" target="_blank" rel="noopener noreferrer">Open on X <span aria-hidden="true">↗</span></a>
+              <button class="action" id="check" type="submit" disabled>Check</button>
+              <p class="countdown" id="countdown">Open the task to start.</p>
+              <span class="sr-only" id="check-status" role="status"></span>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer class="footer">
+      <a href="../">Back to collection</a>
+      <p id="storage-note">Demo mode. Progress and replies stay in this tab. No X verification or WL entry.</p>
+    </footer>
+  </main>
+  <main class="demo-destination" id="destination" hidden>
+    <p>MISS ZERO · TEST LINK</p>
+    <h1 id="destination-title"></h1>
+    <p>This preview shows where the task link will open. Return to the giveaway tab when the timer ends.</p>
+  </main>
+</body>
+</html>

@@ -1,0 +1,216 @@
+:root {
+  color-scheme: dark;
+  --ink: #111;
+  --paper: #f4f2ed;
+  --wall: #080808;
+  --muted: #bfbfbf;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--paper);
+  background: var(--wall);
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; line-height: 1.5; }
+html { scroll-padding-top: 20px; }
+a { color: inherit; text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 4px; }
+button { font: inherit; color: inherit; cursor: pointer; }
+:focus-visible { outline: 3px solid currentColor; outline-offset: 4px; }
+.wrap { width: min(1120px, calc(100% - 64px)); margin-inline: auto; }
+
+.skip {
+  position: absolute;
+  left: 16px;
+  top: -100px;
+  z-index: 2;
+  background: var(--paper);
+  color: var(--ink);
+  padding: 12px;
+}
+.skip:focus { top: 12px; }
+
+.nav {
+  width: calc(100% - 92px);
+  position: relative;
+  min-height: 65px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.brand {
+  position: absolute;
+  left: 0;
+  font-size: 30px;
+  font-weight: 900;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.brand span { font-size: 1.1em; margin-inline: 2px; }
+.nav nav { display: flex; gap: clamp(12px, 3.3vw, 48px); }
+.nav nav a, .film-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+.stargate-hero {
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  min-height: calc(100svh - 65px);
+  padding: 24px 0 42px;
+  background: #000 url("assets/stargate.webp") center / cover;
+  text-align: center;
+}
+.stargate-hero h1 {
+  margin: 0;
+  font-family: "Arial Black", Arial, sans-serif;
+  font-size: clamp(44px, min(13vw, 19svh), 172px);
+  font-weight: 900;
+  letter-spacing: -.065em;
+  line-height: 1;
+}
+.lineup {
+  display: block;
+  width: min(1420px, 100%, max(760px, calc((100svh - 320px) * 2.53)));
+  height: auto;
+  margin: -5px auto 0;
+  mask-image: linear-gradient(#000 86%, transparent);
+}
+.hero-actions { position: relative; margin: -4px 20px 0; }
+.hero-actions p { margin: 0 0 16px; font-size: clamp(17px, 2vw, 24px); }
+.hero-actions .button, .gallery-actions .button {
+  background: var(--paper);
+  color: var(--ink);
+}
+.hero-actions .button:hover, .gallery-actions .button:hover { background: #d4d2cd; }
+.hero-actions .button:focus-visible, .gallery-actions .button:focus-visible,
+.print:focus-visible { outline-color: var(--paper); }
+.gallery { padding: 60px 20px 20px; text-align: center; }
+.gallery h2 { margin: 0 0 24px; font-size: clamp(28px, 4vw, 48px); letter-spacing: -.04em; }
+.gallery-grid {
+  width: min(980px, 100%);
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 13px 16px;
+}
+.print {
+  border: 0;
+  color: var(--ink);
+  padding: 9px 9px 0;
+  background: var(--paper);
+  box-shadow: 0 4px 8px #0004;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+.print:hover { transform: translateY(-3px); box-shadow: 0 7px 12px #0005; }
+.print img { display: block; width: 100%; height: auto; }
+.print span {
+  min-height: 29px;
+  display: grid;
+  place-items: center;
+  font-size: 14px;
+  font-weight: 700;
+}
+.gallery-actions {
+  display: grid;
+  justify-items: center;
+  gap: 2px;
+  margin-top: 30px;
+}
+.button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 22px;
+  min-height: 46px;
+  border: 0;
+  border-radius: 5px;
+  background: var(--ink);
+  color: white;
+  font-weight: 700;
+}
+.button:hover { background: #343434; text-decoration: none; }
+.gallery-actions .button { width: min(300px, 100%); min-height: 58px; font-size: 23px; }
+
+.avatar-dialog {
+  color-scheme: light;
+  width: min(880px, calc(100% - 32px));
+  max-height: calc(100% - 32px);
+  padding: 14px;
+  border: 0;
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: 0 12px 44px #0005;
+}
+.avatar-dialog::backdrop { background: #0009; }
+.dialog-layout { display: grid; grid-template-columns: 1.15fr 1fr; gap: 24px; }
+.dialog-layout img { width: 100%; height: auto; display: block; align-self: start; }
+.dialog-info { padding: 0 10px 8px 0; }
+.dialog-info h2 { margin: 4px 0 12px; line-height: 1.1; }
+.close, .dialog-nav button {
+  min-height: 44px;
+  border: 0;
+  padding: 0 8px;
+  background: transparent;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.close { display: block; margin-left: auto; }
+.dialog-info dl {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 5px 16px;
+  margin: 0 0 18px;
+}
+.dialog-info dt { color: #474747; }
+.dialog-info dd { margin: 0; }
+.dialog-nav { display: flex; gap: 12px; margin-top: 8px; }
+
+.film-section { color-scheme: light; background: var(--paper); color: var(--ink); padding: 70px 0; margin-top: 38px; }
+.film-layout, .about-intro, .faq { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; }
+.film-layout { align-items: center; }
+.film-layout figure { margin: 0; min-width: 0; }
+.film-layout video { display: block; width: 100%; height: auto; background: #000; }
+.film-layout figcaption { margin-top: 12px; }
+.film-layout figcaption span, .film-copy p { color: #474747; }
+.about-intro p { color: var(--muted); }
+.film-copy h2, .about-intro h2 {
+  font-size: clamp(34px, 4vw, 56px);
+  line-height: 1.03;
+  letter-spacing: -.055em;
+  margin: 0;
+}
+.about-section { padding-block: 70px; }
+.about-intro p { margin: 0 0 16px; }
+.faq { margin-top: 28px; border-top: 1px solid #999; padding-top: 25px; }
+.faq h3 { margin: 0; }
+details { border-bottom: 1px solid #999; }
+summary { padding: 14px 0; cursor: pointer; }
+details p { margin-top: 0; }
+footer { border-top: 1px solid #999; padding-block: 24px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 14px; }
+footer p { margin: 0; }
+.footer-logo { font-weight: 900; }
+
+@media (max-width: 650px) {
+  .wrap { width: calc(100% - 36px); }
+  .nav { width: calc(100% - 36px); justify-content: space-between; }
+  .brand { position: static; font-size: 22px; }
+  .nav nav { font-size: 14px; }
+  .stargate-hero { align-content: space-evenly; padding: 18px 0 32px; }
+  .stargate-hero h1 { margin-inline: 12px; }
+  .lineup { width: 100%; margin: 0; }
+  .hero-actions { margin-top: 0; }
+  .gallery { padding-inline: 16px; }
+  .gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .print { padding: 6px 6px 0; }
+  .gallery-actions { margin-top: 22px; }
+  .film-section, .about-section { padding-block: 46px; }
+  .film-layout, .about-intro, .faq { grid-template-columns: 1fr; gap: 24px; }
+  .dialog-layout { grid-template-columns: 1fr; gap: 10px; }
+  .dialog-layout img { max-height: 35dvh; object-fit: contain; background: #ddd; }
+  .dialog-info { padding: 0 4px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .print { transition: none; }
+}

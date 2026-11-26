@@ -1,0 +1,4 @@
+project_id = "miss-zero-site"
+
+[functions.save-wallet]
+verify_jwt = false

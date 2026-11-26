@@ -1,0 +1,49 @@
+name: Deploy MISS ZERO to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    if: ${{ vars.WALLET_API_URL != '' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/configure-pages@v5
+      - name: Set public wallet endpoint
+        env:
+          WALLET_API_URL: ${{ vars.WALLET_API_URL }}
+        run: |
+          python3 - <<'PY'
+          import os
+          import re
+          from pathlib import Path
+
+          url = os.environ['WALLET_API_URL']
+          if not re.fullmatch(r'https://[a-z0-9]+\.supabase\.co/functions/v1/save-wallet', url):
+              raise SystemExit('WALLET_API_URL must be the project save-wallet function URL')
+          page = Path('dist/giveaway/index.html')
+          html = page.read_text(encoding='utf-8')
+          marker = '<meta name="wallet-api" content="">'
+          if html.count(marker) != 1:
+              raise SystemExit('Missing wallet endpoint metadata')
+          page.write_text(html.replace(marker, f'<meta name="wallet-api" content="{url}">'), encoding='utf-8')
+          PY
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: dist
+      - uses: actions/deploy-pages@v4
+        id: deployment
